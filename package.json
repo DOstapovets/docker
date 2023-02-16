@@ -1,0 +1,24 @@
+{
+  "name": "docker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./src/index.js",
+    "dev": "npx nodemon ./src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "compose": "docker compose up --build",
+    "docker:start": "docker run -p 8001:4000 --rm -it test-docker:latest",
+    "docker:build": "docker build . -t test-docker:latest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2",
+    "mongoose": "^6.9.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}

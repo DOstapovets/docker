@@ -1,0 +1,20 @@
+services: 
+  app:
+    build: .
+    command: ["npm", "run", "dev"]
+    env_file: '.env'
+    ports:
+      - 8001:4000
+    volumes:
+      - ./src/:/app/src
+      # - vstorage:/app/storage
+      - ./storage:/app/storage
+  db:
+    image: mongo:latest
+    ports:
+      - 27017:27017     
+    volumes:
+      - volume_db:/data/db
+volumes:
+  volume_db:
+  vstorage:
