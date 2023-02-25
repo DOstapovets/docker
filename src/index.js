@@ -15,21 +15,17 @@ app.get('/', (req, res) => {
 });
 
 app.get('/create-file',async (req, res) => {
-  const {fileName} = req.query;
+  const { fileName } = req.query;
   console.log('create', {fileName});
   await fs.writeFile(path.join('/app/storage', fileName), new Date().toISOString())
   res.json({status:'OK'})
 });
 
 app.get('/file', (req, res) => {
-  const {fileName} = req.query;
+  const { fileName } = req.query;
   console.log('get', {fileName});
   res.sendFile(path.join('/app/storage', fileName))
 });
-
-
-mongoose.set('strictQuery', false);
-console.log({ MONGO_URL });
 
 mongoose.connect(MONGO_URL, async () => {
   app.listen(PORT, () => {
